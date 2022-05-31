@@ -85,41 +85,86 @@ list_of_students_of_schedules = [
 ]
 
 
-def check_attributes(a, b):
-    count = 0
-    for a_item in a:
-        for b_item in b:
-            if a_item['scheduleID'] == b_item['scheduleID']:
-                count += 1
-                print(f"scheduleID Matched for {a_item['scheduleID']}")
-                if a_item['endTime'] == b_item['endTime']:
-                    print(f'endTime Matched')
-                    count += 1
-                if a_item['startTime'] == b_item['startTime']:
-                    print('startTime Matched')
-                    count += 1
-                if a_item['subject'] == b_item['subject']:
-                    print('subject Matched')
-                    count += 1
-                if a_item['subjectLevel'] == b_item['subjectLevel']:
-                    print('subjectLevel Matched')
-                    count += 1
-                if a_item['subjectWeek'] == b_item['subjectWeek']:
-                    print('subjectWeek Matched')
-                    count += 1
-                if a_item['test'] == b_item['test']:
-                    print('test Matched')
-                    count += 1
-                break
-            else:
-                continue
-    return count
+# def check_attributes(a, b):
+#     count = 0
+#     for a_item in a:
+#         for b_item in b:
+#             if a_item['scheduleID'] == b_item['scheduleID']:
+#                 count += 1
+#                 print(f"scheduleID Matched for {a_item['scheduleID']}")
+#                 if a_item['endTime'] == b_item['endTime']:
+#                     print(f'endTime Matched')
+#                     count += 1
+#                 if a_item['startTime'] == b_item['startTime']:
+#                     print('startTime Matched')
+#                     count += 1
+#                 if a_item['subject'] == b_item['subject']:
+#                     print('subject Matched')
+#                     count += 1
+#                 if a_item['subjectLevel'] == b_item['subjectLevel']:
+#                     print('subjectLevel Matched')
+#                     count += 1
+#                 if a_item['subjectWeek'] == b_item['subjectWeek']:
+#                     print('subjectWeek Matched')
+#                     count += 1
+#                 if a_item['test'] == b_item['test']:
+#                     print('test Matched')
+#                     count += 1
+#                 break
+#             else:
+#                 continue
+#     return count
 
 
-number_of_validated_attributes = check_attributes(list_of_studyContent_of_upcomingLiveClass, list_of_students_of_schedules)
-print(number_of_validated_attributes)
+# number_of_validated_attributes = check_attributes(list_of_studyContent_of_upcomingLiveClass, list_of_students_of_schedules)
+# print(number_of_validated_attributes)
 # for b_item in b:
 #     del b_item['studentID']
 #     del b_item['studentName']
 #
 # print(b)
+
+
+list_of_subjects_upcoming_live_class = [
+    {
+        "scheduleID": 14330820,
+        "subject": "English",
+        "subjectWeek": "19-S",
+        "subjectLevel": "Level M1",
+        "startTime": "5:30 PM",
+        "endTime": "6:00 PM",
+        "test": False
+    },
+    {
+        "scheduleID": 14372007,
+        "subject": "Math",
+        "subjectWeek": "1-A",
+        "subjectLevel": "Level 8",
+        "startTime": "6:00 PM",
+        "endTime": "6:30 PM",
+        "test": True
+    }
+]
+
+list_of_subjects_schedules = [
+    {
+        "scheduleID": 14330820,
+        "subject": "English",
+        "subjectWeek": "19-S",
+        "subjectLevel": "Level M1",
+        "startTime": "5:30 PM",
+        "endTime": "6:00 PM",
+        "test": False
+    },
+    {
+        "scheduleID": 14372007,
+        "subject": "Math",
+        "subjectWeek": "1-A",
+        "subjectLevel": "Level 8",
+        "startTime": "6:00 PM",
+        "endTime": "6:30 PM",
+        "test": True
+    }
+]
+
+print(list_of_subjects_upcoming_live_class == list_of_subjects_schedules)
