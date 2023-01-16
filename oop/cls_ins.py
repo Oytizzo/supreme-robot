@@ -7,9 +7,17 @@ class Person:
         self.last = last
         self.email = email
 
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
 
 person_1 = Person("Mike", "Tyson", "mike@boxer.com")
 person_2 = Person("Neil", "Tyson", "neil@nasa.com")
 
-print(person_1.email)
-print(person_2.email)
+# print(person_1.email)
+# print(person_2.email)
+
+print(person_1.fullname())
+print(Person.fullname(person_1))
+
+print(person_2.fullname())
+print(Person.fullname(person_2))
