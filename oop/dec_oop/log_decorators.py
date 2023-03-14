@@ -2,7 +2,7 @@ import logging
 import pytest
 
 
-def log_to_file(logfile):
+def class_logger_to_file(logfile):
     def decorator(cls):
         logger = logging.getLogger(cls.__module__)
         logger.setLevel(logging.INFO)
@@ -31,7 +31,7 @@ def _wrap_test_method(fn, logger):
     return wrapper
 
 
-@log_to_file("test.log")
+@class_logger_to_file("test.log")
 class TestSomething:
     def test_one(self):
         assert 1 == 1
