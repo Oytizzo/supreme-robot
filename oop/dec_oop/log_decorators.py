@@ -31,6 +31,14 @@ def _wrap_test_method(fn, logger):
     return wrapper
 
 
+def class_logger(cls):
+    logger = logging.getLogger(cls.__module__)
+    for name, fn in cls.__dict__.items():
+        if callable(fn) and name.startswith("test"):
+            setattr(cls, name, _wrap_test_method(fn, logger))
+    return cls
+
+
 @class_logger_to_file("test.log")
 class TestSomething:
     def test_one(self):
