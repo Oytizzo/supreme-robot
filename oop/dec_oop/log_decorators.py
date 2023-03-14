@@ -39,10 +39,23 @@ def class_logger(cls):
     return cls
 
 
-@class_logger_to_file("test.log")
-class TestSomething:
-    def test_one(self):
-        assert 1 == 1
+def func_log_to_file(logfile):
+    def decorator(fn):
+        logger = logging.getLogger(fn.__module__)
+        logger.setLevel(logging.INFO)
 
-    def test_two(self):
-        assert 2 == 2
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        fh = logging.FileHandler(logfile)
+        fh.setLevel(logging.INFO)
+        fh.setFormatter(formatter)
+        logger.addHandler(fh)
+
+        def wrapper(*args, **kwargs):
+            logger.info("Starting function: %s", fn.__name__)
+            result = fn(*args, **kwargs)
+            logger.info("Finished function: %s", fn.__name__)
+            return result
+        return wrapper
+
+    return decorator
