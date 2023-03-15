@@ -5,7 +5,7 @@ import pytest
 # To use this decorator, simply apply it to the function that you want to log to a file, like so:
 @func_log_to_file("test.log")
 def test_something():
-    assert 1 == 1
+    assert 1 == 0
 
 
 @class_logger
