@@ -52,10 +52,16 @@ def func_log_to_file(logfile):
         logger.addHandler(fh)
 
         def wrapper(*args, **kwargs):
-            logger.info("Starting function: %s", fn.__name__)
-            result = fn(*args, **kwargs)
-            logger.info("Finished function: %s", fn.__name__)
-            return result
+            try:
+                logger.info("Starting function: %s", fn.__name__)
+                result = fn(*args, **kwargs)
+                logger.info("Finished function: %s", fn.__name__)
+                return result
+            except Exception as e:
+                print(e)
+                # logger.critical("Failed: %s", fn.__name__)
+                logger.error(e, exc_info=False)
+                # logger.exception(f"Exception raised in {fn.__name__}. exception: {e}")
         return wrapper
 
     return decorator
