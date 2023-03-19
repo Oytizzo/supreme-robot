@@ -1,5 +1,6 @@
 import logging
 import pytest
+import time
 
 
 def class_logger_to_file(logfile):
@@ -65,3 +66,27 @@ def func_log_to_file(logfile):
         return wrapper
 
     return decorator
+
+
+def tictoc(func):
+    def wrapper(*args, **kwargs):
+        t1 = time.time()
+        result = func(*args, **kwargs)
+        t2 = time.time() - t1
+        print(f'{func.__name__} ran in {t2} seconds')
+
+    return wrapper
+
+
+if __name__ == "__main__":
+    @tictoc
+    def do_this():
+        time.sleep(1.3)
+
+    @tictoc
+    def do_that():
+        time.sleep(.4)
+
+    do_this()
+    do_that()
+    print("done")
