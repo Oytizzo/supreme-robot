@@ -2,12 +2,14 @@ from .log_decorators import class_logger, class_logger_to_file, func_log_to_file
 import pytest
 
 
+# pytest logging
 # To use this decorator, simply apply it to the function that you want to log to a file, like so:
 @func_log_to_file("test.log")
 def test_something():
     assert 1 == 0
 
 
+# pytest logging
 @class_logger
 class TestSomething:
     def test_one(self):
@@ -17,6 +19,7 @@ class TestSomething:
         assert 2 == 2
 
 
+# pytest logging
 @class_logger_to_file("test.log")
 class TestSomething:
     def test_one(self):
