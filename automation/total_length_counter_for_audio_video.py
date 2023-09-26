@@ -46,5 +46,5 @@ if __name__ == "__main__":
     seconds = remainder - (minutes * 60)
 
     print("Directory: " + dir_path)
-    print("Total number of video files is " + str(number_of_video_files))
+    print("Total number of video files are " + str(number_of_video_files))
     print("Length: %d:%02d:%02d" % (hours, minutes, seconds))
