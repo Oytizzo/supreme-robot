@@ -49,7 +49,7 @@ def zeuz_node_dirs(base_dir, node_dir_pattern):
     return tuple(directory_paths)
 
 
-if __name__ == "__main__":
+def main():
     # Todo: Get the requested number of nodes
     req_number_of_nodes = 1
     # Todo: Get the server address and api to run the nodes
@@ -80,10 +80,14 @@ if __name__ == "__main__":
     if number_of_running_nodes == req_number_of_nodes:
         print("Required number of nodes are running. No action require")
     elif number_of_running_nodes >= req_number_of_nodes:
-        print(f"Extra {number_of_running_nodes-req_number_of_nodes} running on the background")
+        print(f"Extra {number_of_running_nodes - req_number_of_nodes} running on the background")
     elif number_of_running_nodes <= req_number_of_nodes:
         # Todo: Find out which node is not running and run it or those
         pass
 
     # Todo:
     pass
+
+
+if __name__ == "__main__":
+    main()
